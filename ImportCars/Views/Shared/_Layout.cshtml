@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ImportCars</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/owl.carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ImportCars.styles.css" asp-append-version="true" />
+
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-marketing navbar-expand-lg bg-dark navbar-dark fixed-top">
+            <div class="container px-5">
+                <a href="@Url.Action("Index","Home")"><img src="~/img/Obraz1.svg" class="navbar-logo"/></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto me-lg-5">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("AboutUs","Home")">O nas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Offer","Home")">Oferta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ImportSteps","Home")">Etapy importu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Contact","Home")">Kontakt</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Blog","Home")">Blog</a>
+                        </li>*@
+                    </ul>
+                    <div class="navbar-social">
+                        <a href="https://www.facebook.com/profile.php?id=100070141455471"><span class="nav-social-icon social-facebook"><i class="fa-brands fa-facebook-f"></i></span></a>
+                        <a href="https://www.instagram.com/automarzen.rzeszow/?igsh=MWdhaXA4eG1wMXcyOA%3D%3D&utm_source=qr"><span class="nav-social-icon social-instagram"><i class="fa-brands fa-instagram"></i></span></a>
+                    </div>
+                    <a class="btn fw-500 ms-lg-4 btn-primary btn-auction" href="@Url.Action("Index","Home")#auctions">
+                        Sprawdź aukcje<i class="ms-2" data-feather="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="bg-dark text-center text-lg-start text-white">
+        <div class="container p-4">
+            <div class="row my-4">
+                <div class="col-lg-6 col-md-6 mb-4 mb-md-0 footer-logo">
+                    <!-- FOOTER LOGO -->
+                    <div style="text-align: center;">
+                        <img src="~/img/Obraz1.svg" width="250px" alt="" loading="lazy" />
+                        <ul class="list-unstyled d-flex flex-row justify-content-center">
+                            <li>
+                                <a class="text-white px-2 footer-social-icon" href="https://www.facebook.com/profile.php?id=100070141455471">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-white px-2 footer-social-icon" href="https://www.instagram.com/automarzen.rzeszow/?igsh=MWdhaXA4eG1wMXcyOA%3D%3D&utm_source=qr">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- FOOTER PAGES -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <ul class="footer-list-pages">
+                        <li class="mb-2">
+                            <a href="@Url.Action("AboutUs","Home")" class="text-white">O nas</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="@Url.Action("Offer","Home")" class="text-white">Oferta</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="@Url.Action("ImportSteps","Home")" class="text-white">Etapy importu</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="@Url.Action("Contact","Home")" class="text-white">Kontakt</a>
+                        </li>
+                        <!--<li class="mb-2">
+                            <a href="@Url.Action("Blog","Home")" class="text-white">Blog</a>
+                        </li>-->
+                    </ul>
+                </div>
+
+                <!--CONTACT-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Kontakt</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <p><i class="fas fa-map-marker-alt pe-2"></i>Kosina 441, 37-112</p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-phone pe-2"></i><a href="tel:887732726" class="text-white">887 732 726</a></p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-envelope pe-2 mb-0"></i><a href="mailto:kontakt@importujauto.pl" class="text-white">kontakt@importujauto.pl</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid row-->
+            </div>
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2024 Copyright: ImportujAuto.pl
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="~/js/owl.carousel.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/bootstrapTheme.js" asp-append-version="true"></script>
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

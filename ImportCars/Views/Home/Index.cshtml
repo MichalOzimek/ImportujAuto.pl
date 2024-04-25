@@ -1,0 +1,254 @@
+﻿@model ImportCars.ViewModels.HomePageModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<script>
+    var navbarCollapse = function () {
+        const navbarMarketingTransparentFixed = document.body.querySelector('.navbar-marketing.fixed-top');
+        if (!navbarMarketingTransparentFixed) {
+            return;
+        }
+        if (window.scrollY === 0) {
+            navbarMarketingTransparentFixed.classList.add('bg-transparent');
+            navbarMarketingTransparentFixed.classList.remove('navbar-scrolled')
+        } else {
+            navbarMarketingTransparentFixed.classList.add('navbar-scrolled')
+        }
+
+    };
+</script>
+<!-- Page Header-->
+<header class="page-header-ui page-header-ui-light bg-img-cover overlay overlay-dark overlay-80" style="background-image: url('/img/header-img.jpg')">
+    <div class="page-header-ui-content py-5 position-relative">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-xl-8 col-lg-10 text-center">
+                    <h1 class="page-header-ui-title">Z nami kupisz swój samochód marzeń!</h1>
+                    <p class="page-header-ui-text mb-5">
+                        Spełniamy motoryzacyjne marzenia. Sprowadzamy pojazdy z USA i Kanady. Zaufaj naszemu doświadczeniu!
+                    </p>
+                    <a class="btn btn-light fw-500 me-2" href="@Url.Action("Offer","Home")">Nasza oferta</a>
+                    <a class="btn btn-dark fw-500" href="@Url.Action("Contact","Home")">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="svg-border-rounded text-white">
+        <!-- Rounded SVG Border-->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+    </div>
+</header>
+
+<!--Aukcje wkrótce-->
+<section class="bg-white py-10" id="auctions">
+    <div class="text-center"><h2 class="section-title">Aukcje wkrótce</h2></div>
+    <div class="container px-4">
+        <div class="owl-carousel carousel-dark">
+            @foreach (var item in Model.Auctions)
+            {
+                <div class="">
+                    <a class="card lift h-100" href="@item.Url">
+                        <img class="card-img-top" src="@Url.Content(item.Images?.FirstOrDefault()?.Path)" alt="..." />
+                        <div class="card-body">
+                            <h4 class="card-title mb-2">@item.Name</h4>
+                            <ul class="car-info">
+                                <li><span>@item.ProductionYear</span></li>
+                                <li><span>@item.EngineType</span></li>
+                                <li><span>@item.EngineCapacity</span></li>
+                            </ul>
+                            <span>Przewidywana cena: </span><span class="auction-price">@string.Concat(item.Price, " zł")</span>
+                        </div>
+                        <div class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                            <div class="small auction-text-primary">Sprawdz</div>
+                            <div class="small auction-text-primary"><i data-feather="arrow-right"></i></div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+        <!--FAQ-->
+        <div class="text-center mb-4"><h2 class="section-title">Często zadawane pytania</h2></div>
+        <div class="accordion" id="accordionFaq">
+            @{
+                if (Model.Questions != null && Model.Questions.Any())
+                {
+                    var questionList = Model.Questions.ToList(); // Convert to a list for indexed access
+
+                    for (int i = 0; i < questionList.Count; i++)
+                    {
+                        var question = questionList[i];
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading@(i)">
+                                <button class="accordion-button @(i == 0 ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(i)" aria-expanded="@(i == 0)" aria-controls="collapse@(i)">
+                                    @question.Question
+                                </button>
+                            </h2>
+                            <div id="collapse@(i)" class="accordion-collapse collapse @(i == 0 ? "show" : "")" aria-labelledby="heading@(i)" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    @question.Answer
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        @*        <button class="carousel-control-prev" type="button" style="left: -204px">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" style="right: -204px">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+        </button>*@
+    </div>
+
+
+
+
+</section>
+
+
+<section class="bg-img-cover overlay overlay-80 py-15 text-right overlay-dark-index" style="background-image: url('https://cdn.pixabay.com/photo/2018/11/17/18/57/shelby-3821712_1280.jpg')">
+    <div class="container px-5 z-1">
+        <div class="mt-5 text-end">
+            <!--<div class="display-4 mb-3 text-white">Sprawdź naszego bloga</div>-->
+            <div class="display-4 mb-3 text-white">Blog już wkrótce!</div>
+            <!--<a class="btn btn-primary fw-500 btn-contact" href="@Url.Action("Blog","Home")">Blog</a>-->
+        </div>
+    </div>
+    <div class="svg-border-angled text-white">
+        <!-- Angled SVG Border-->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+    </div>
+</section>
+<!--Opinions-->
+<section class="bg-white py-10">
+    <div class="container px-5">
+
+        <div id="carouselExampleControls2" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row gx-5">
+                        <div class="col-lg-6 mb-5 mb-lg-0 divider-right">
+                            <div class="testimonial p-lg-5">
+                                <div class="mb-3 text-yellow">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-quote opinion-text-primary">"Dziękuje za realizację i pomoc w imporcie mojego BMW X3. Jestem bardzo zadowolona z samego samochodu jak i całej obsługi. Pani DOROTKA przeprowadziła mnie krok po kroku przez całą procedurę od początku do końca, mało tego pomogła nawet przy rejestracji samochodu i na wszystkie moje pytania była do dyspozycji. Był to mój pierwszy samochód z USA, jednak na lato na pewno zgłoszę się ponownie. Bardzo dziękuje raz jeszcze!"</p>
+                                <div class="testimonial-name">Grażyna Glowiak</div>
+                                <div class="testimonial-position">Rzeszów, Polska</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="testimonial p-lg-5">
+                                <div class="mb-3 text-yellow">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-quote opinion-text-primary">"Polecam! Bardzo miły kontakt i doradztwo. Jestem bardzo zadowolony ze współpracy. Miła oraz profesjonalna obsługa, a przedstawione oferty nie odbiegały od rzeczywistości. Kupiłem już 2 auta i jestem bardzo zadowolony!!! :)"</p>
+                                <div class="testimonial-name">Zbigniew Marcinek</div>
+                                <div class="testimonial-position">Łańcut, Polska</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row gx-5">
+                        <div class="col-lg-6 mb-5 mb-lg-0 divider-right">
+                            <div class="testimonial p-lg-5">
+                                <div class="mb-3 text-yellow">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-quote opinion-text-primary">"Bardzo kompleksowa, miła i rzetelna obsługa. Panowie znają się doskonale na swojej pracy. Potrafią świetnie doradzić i znaleźć najlepsze rozwiązanie podczas sprowadzania nawet najdroższych samochodów. Kontakt jest wzorowy o każdej porze dnia. Przy najbardziej skomplikowanych sytuacjach można liczyć również na kontakt w weekendy. Jeśli ktoś chciałby sprowadzić sobie auto z Ameryki lub Kanady, to z czystym sumieniem mogę polecić tylko i wyłącznie Auto Marzeń! Pozdrawiam serdecznie cały team!"</p>
+                                <div class="testimonial-name">Katrzyna Kozlowska-Bruk</div>
+                                <div class="testimonial-position">Rzeszów, Polska</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="testimonial p-lg-5">
+                                <div class="mb-3 text-yellow">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-quote opinion-text-primary">
+                                    "Bardzo profesjonalny i miły kontakt przez cały okres związany z importem auta. Współpraca na bardzo wysokim poziomie już na samym początku wszystko zostało nam jasno i klarownie przedstawione. Byłem poprowadzony można powiedzieć kolokwialnie "za rączke" przez wszystkie procedury. Dzięki temu nie miałem najmniejszych obaw o profesjonalism i powodzenie "misji" jakim był zakup i sprowadzenie zaplanowanego auta.
+
+                                    Polecam i na pewno jeszcze wrócę po kolejne.
+
+                                    Pozdrawiam"
+                                </p>
+                                <div class="testimonial-name">Bogusław Sobczak</div>
+                                <div class="testimonial-position">Rzeszów, Polska</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row gx-5">
+                        <div class="col-lg-6 mb-5 mb-lg-0 divider-right">
+                            <div class="testimonial p-lg-5">
+                                <div class="mb-3 text-yellow">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-quote opinion-text-primary">"Bardzo kompleksowa, miła i rzetelna obsługa. Panowie znają się doskonale na swojej pracy. Potrafią świetnie doradzić i znaleźć najlepsze rozwiązanie podczas sprowadzania nawet najdroższych samochodów. Kontakt jest wzorowy o każdej porze dnia. Przy najbardziej skomplikowanych sytuacjach można liczyć również na kontakt w weekendy. Jeśli ktoś chciałby sprowadzić sobie auto z Ameryki lub Kanady, to z czystym sumieniem mogę polecić tylko i wyłącznie Auto Marzeń! Pozdrawiam serdecznie cały team!"</p>
+                                <div class="testimonial-name">
+                                    Katrzyna Kozlowska-Bruk
+                                </div>
+                                <div class="testimonial-position">Jarosław, Polska</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="testimonial p-lg-5">
+                                <div class="mb-3 text-yellow">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-quote opinion-text-primary">
+                                    "Polecam! Bardzo miły kontakt i doradztwo. Jestem bardzo zadowolony ze współpracy. Miła oraz profesjonalna obsługa, a przedstawione oferty nie odbiegały od rzeczywistości.
+                                    Kupiłem już 2 auta i jestem bardzo zadowolony!!! :)"
+                                </p>
+                                <div class="testimonial-name">
+                                    Zbigniew Marcinek
+                                </div>
+                                <div class="testimonial-position">Przeworsk, Polska</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev" style="left: -204px">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next" style="right: -204px">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>*@
+        </div>
+    </div>
+</section>
+<hr class="my-0" />

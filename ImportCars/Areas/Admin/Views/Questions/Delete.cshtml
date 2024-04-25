@@ -1,0 +1,33 @@
+﻿@model ImportCars.Models.Questions
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2 class="mt-4 mb-0">Pytania i odpowiedzi</h2>
+
+<h4>Czy na pewno chcesz usunąć?</h4>
+<hr />
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+    </dl>
+    
+    <hr />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-outline-dark back-button">Wstecz</a>
+    </form>
+</div>

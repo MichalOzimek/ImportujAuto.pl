@@ -1,0 +1,43 @@
+﻿@model ImportCars.Models.Auctions
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 class="mt-4 mb-0">Aukcje</h2>
+
+<h4>Szczegóły</h4>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EngineCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EngineCapacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EngineType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EngineType)
+        </dd>
+    </dl>
+</div>
+<hr/>
+<a class="btn btn-dark" asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a>
+<a class="btn btn-outline-dark back-button" asp-action="Index">Back to List</a>
+

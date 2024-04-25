@@ -22,11 +22,11 @@ Strona jest opublikowana na zewnętrznym serwerze oraz dostępna pod poniższym 
 - Możliwość dodawania oraz edytowania aktualnych aukcji. 
 - Możliwość edytowania treści na stronie tj. FAQ.
 - Dodawanie zdjęć do treści.
--
-- Aktualnie dodatkowo pracuję nad:
-- stworzeniem bloga oraz możliwością samodzielnego dodawania artykułów
-- możliwością zarządzania aktualnymi ofertami sprzedaży samochodów
-- formularzem kontaktowym
+
+## Funkcjonalności nad którymi pracuję
+- Stworzenie bloga z możliwością samodzielnego dodawania artykułów
+- Możliwością zarządzania aktualnymi ofertami sprzedaży samochodów
+- Formularz kontaktowy
 
 ## Aukcje
 ![aukcje](https://github.com/MichalOzimek/ImportujAuto.pl/assets/50703561/ae58ab20-7722-4bd5-88cc-2bc6e5df0ab5)
